@@ -1,0 +1,17 @@
+focusonnetactive
+Description
+By default, dwm response to client requests to _NET_ACTIVE_WINDOW client messages by setting the urgency bit on the named window.
+
+This patch activates the window instead.
+
+Both behaviours are legitimate according to the cursed spec
+
+One should decide which of these one should perform based on the message senders' untestable claims that it represents the end-user. Setting the urgency bit is the conservative decision. This patch implements the more trusting alternative.
+
+It also allows dwm to work with wmctrl -a and other external window management utilities.
+
+Download
+dwm-focusonnetactive-2017-12-24-3756f7f.diff
+Author
+Danny O'Brien danny@spesh.com
+

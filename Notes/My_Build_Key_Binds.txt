@@ -1,0 +1,122 @@
+################ DWM 6.2 - Moded Keyboard Shortcuts with Current Patches ##############
+
+Patches:
+====== 
+	Auto Start: dwm-autostart-20161205-bb3bd6f.diff
+	Fake Full Screen: dwm-fakefullscreen-20170508-ceac8c9.diff
+	Rotate Stack: dwm-rotatestack-20161021-ab9571b.diff
+	Vanity Gaps: dwm-vanitygaps-20190508-6.2.diff
+	C-Facts: 
+		dwm-cfacts-6.2.diff
+		dwm-cfacts_centeredmaster-6.2.diff
+		dwm-cfacts_deck-6.2.diff
+	Focusonnetactive: dwm-focusonnetactive-2017-12-24-3756f7f.diff
+	Systray: dwm-systray-6.2.diff
+
+	 /* modifier					key    function        argument 	   */
+	 -----------------------------------------------------------------------
+	 /* Launchers  */ 
+	 MODKEY|ShiftMask,              a,       spawn,       = Dmenu ,
+     MODKEY, 		                x,		spawn,		  =	Xfce4-appfinder ,  	
+	 MODKEY,                        a,      spawn,        = Rofi  ,
+
+	 /* Dev */
+	 MODKEY,		                t, 	   spawn,        = Termite  ,
+	 MODKEY,	                	p,	   spawn,        = Pycharm  ,
+	 MODKEY|ShiftMask,            	p,	   spawn,        = Bpython  ,
+	 MODKEY|ShiftMask,            	c,	   spawn,        = Vscode   ,
+	 
+	 /* Web Browsers */
+	 MODKEY,	                	w,	   spawn,        = Vivaldi  ,
+	 MODKEY,	                	c,	   spawn,        = Chromium   ,
+
+	 /* File Managers */ 	
+	 MODKEY, 				        f,     spawn,        = Thunar  ,
+	 MODKEY|ShiftMask,		        f,     spawn,        = Ranger  ,
+
+	 /* Utilities */
+     MODKEY|ShiftMask,			    o,	   spawn		 = Shuffle wallpaper ,
+	 MODKEY,						z,	   spawn,        = Calculator ,
+	 MODKEY,						Print, spawn,        = Screenshot ,
+	 MODKEY,						v,	   spawn,	     = Password Manager ,		
+	 MODKEY,						g,	   spawn,	     = Glances ,		
+     MODKEY,	                	z,	   spawn,        = Calculator ,
+	 MODKEY,	                	m,	   spawn,        = Ncmpcpp  ,
+
+	 /* Media Mappings  -- by Key Name */ 
+		XF86AudioRaiseVolume , 	XF86AudioLowerVolume , 	XF86AudioMute ,				
+		XF86AudioPlay,	XF86AudioPause,	XF86AudioNext, 	XF86AudioPrev,				
+
+
+	 / * Exit System * / 
+	 MODKEY|ControlMask,            x, 	   spawn,	     = Arco logout  ,
+	 MODKEY|ShiftMask,              x,      quit,        = Exit DWM ,
+
+
+	/* ---------------------- Navigation Key Bindings  ----------------------------- */ 
+     /* Toggle Status bar * / 
+	 MODKEY,                       b,      togglebar,      = Statusbar
+
+	 /* Gap Management */  
+	 MODKEY,                       minus,  setgaps,        .i = -1  ,
+	 MODKEY,                       equal,  setgaps,        .i = +1  ,
+	 MODKEY|ShiftMask,             equal,  setgaps,        .i = 0   ,
+
+	 /*Toggle Left (comma ) / Right (period) between monitors. */
+	 MODKEY,                       comma,  focusmon,       .i = -1  : Left, 
+	 MODKEY,                       period, focusmon,       .i = +1  : Right,
+
+	 / * Cycle & Focus within current Stack * / 
+	 MODKEY,                       j,      focusstack,     .i = +1 : Left ,
+	 MODKEY,                       k,      focusstack,     .i = -1 : Right ,
+
+	 /* Make Master */ 
+	 MODKEY,                       Return, zoom,           Make Focused App Master ,
+	 MODKEY,                       Tab,    view,           Cycle between last two ,
+
+	 /* Increment / Decrement : Vertical | Horizontal Positions */ 
+	 MODKEY,                       i,      incnmaster,     .i = +1 : Increment Master
+	 MODKEY,                       d,      incnmaster,     .i = -1 : Decrement Master ,
+
+	 /* Rotate Master in the Current Stack */
+	 MODKEY|ShiftMask,			   j,	   movestack,	    .i = +1: Left ,
+	 MODKEY|ShiftMask,			   k,	   movestack,	    .i = -1: Right ,
+	
+	 /*Resize Left / Right | Vertical Increment / Decrement  */
+	 MODKEY,                       h,      setmfact,       .f = -0.05: Left ,
+	 MODKEY,                       l,      setmfact,       .f = +0.05: Right ,
+	 MODKEY|ControlMask,           l,      setcfact,       .f = +0.25: Vertical Inc. ,
+	 MODKEY|ControlMask,           h,      setcfact,       .f = -0.25: Vertical Dec.,
+	 MODKEY|ControlMask,           o,      setcfact,       .f =  0.00: Vert Reset,	
+
+	 /* Set Layouts  */
+	 MODKEY|ShiftMask,             t,      setlayout,      = Tiled Layout  (Default),
+	 MODKEY|ShiftMask,             f,      setlayout,      = Floating Layout ,
+	 MODKEY|ShiftMask,             m,      setlayout,      = Monocle Layout ,
+	 MODKEY,                       g,      setlayout,      = Grid Layout ,
+	
+	/* Set Layouts */
+	 MODKEY|ControlMask,           t,      setlayout,      = Tile Layout (Default),
+	 MODKEY|ControlMask,           f,      setlayout,      = Floating Layout ,
+	 MODKEY|ControlMask,           m,      setlayout,      = Monocle Layout ,
+	 MODKEY|ControlMask,           d,      setlayout,      = Deck Layout , 
+	 MODKEY|ControlMask,           c,      setlayout,      = Centered Master ,  
+	 MODKEY|ControlMask,           space,  setlayout,      = Centered Floating Master ,
+
+	 /* Toggle between last two layouts / floating */
+	 MODKEY|ShiftMask,              space,  setlayout,      0 ,
+	 MODKEY,		                space,  togglefloating, = Toggle Floating 
+
+	 /* Kill Window */
+	 MODKEY|ShiftMask,             q,      killclient	   kill focused client ,
+	 MODKEY, 	     	           Escape, spawn, 	       x_kill 
+
+	 /* Shutdown | Reboot Computer / Exit DWM  */
+	 MODKEY|ControlMask,  	       x, 	spawn,			  Arcolinux Logout ,		
+	
+	 /*Lock Screen  */
+	 MODKEY|ControlMask,		   s, 	spawn,			  Slimlock , 
+
+	 /*Quit DWM */
+	 MODKEY|ShiftMask,             x,      quit,          Exit DWM ,
+	
