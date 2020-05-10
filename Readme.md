@@ -1,6 +1,6 @@
 #My Custom DWM 6.2 Build
 
-![](/home/joe/System-Logs/Config.bak/GitConfig/DWM_Desktop.png) 
+![](./DWM_Desktop.png) 
 
 ###Overview:
 
