@@ -20,9 +20,9 @@ This project  includes my compiled version of DWM as well as some refference inf
 
  
 ####Resources:
-[Suckless.org](https://dwm.suckless.org) 
-[Arch Linux Wiki](https://wiki.archlinux.org) 
-[Arco Linux ](https://arcolinux.com) 
+-[Suckless.org](https://dwm.suckless.org) 
+-[Arch Linux Wiki](https://wiki.archlinux.org) 
+-[Arco Linux ](https://arcolinux.com) 
 
 ####Clone , Compile , Go ...
 
