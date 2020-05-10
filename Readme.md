@@ -71,7 +71,7 @@ Afterwards enter the following command to build and install dwm (if  necessary a
 
 --   
 
-**Apply: **
+**Apply**: 
 
 	   patch -p1 < path/to/patch.diff
    
