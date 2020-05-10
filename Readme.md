@@ -66,9 +66,12 @@ Afterwards enter the following command to build and install dwm (if  necessary a
  
 
 -- 
+
 -    [More Patches Here](https://dwm.suckless.org/patches/) 
+
 --   
-   Apply: 
+
+**   Apply: **
 
 	   patch -p1 < path/to/patch.diff
    
