@@ -49,7 +49,7 @@ XF86AudioPlay,	XF86AudioPause,	XF86AudioNext, 	XF86AudioPrev,
 
 
 / * Exit System * / 
-MODKEY|ControlMask,            x, 	   spawn,	     = Arco logout  ,
+MODKEY|ControlMask,            x, 	   spawn,       = Arco logout  ,
 MODKEY|ShiftMask,              x,      quit,        = Exit DWM ,
 
 
@@ -89,11 +89,6 @@ MODKEY|ControlMask,           l,      setcfact,       .f = +0.25: Vertical Inc. 
 MODKEY|ControlMask,           h,      setcfact,       .f = -0.25: Vertical Dec.,
 MODKEY|ControlMask,           o,      setcfact,       .f =  0.00: Vert Reset,	
 
-/* Set Layouts  */
-MODKEY|ShiftMask,             t,      setlayout,      = Tiled Layout  (Default),
-MODKEY|ShiftMask,             f,      setlayout,      = Floating Layout ,
-MODKEY|ShiftMask,             m,      setlayout,      = Monocle Layout ,
-MODKEY,                       g,      setlayout,      = Grid Layout ,
 
 /* Set Layouts */
 MODKEY|ControlMask,           t,      setlayout,      = Tile Layout (Default),
@@ -104,8 +99,8 @@ MODKEY|ControlMask,           c,      setlayout,      = Centered Master ,
 MODKEY|ControlMask,           space,  setlayout,      = Centered Floating Master ,
 
 /* Toggle between last two layouts / floating */
-MODKEY|ShiftMask,              space,  setlayout,      0 ,
-MODKEY,		                space,  togglefloating, = Toggle Floating 
+MODKEY|ShiftMask,             space,  setlayout,      0 ,
+MODKEY,		                  space,  togglefloating, = Toggle Last Layout 
 
 /* Kill Window */
 MODKEY|ShiftMask,             q,      killclient	   kill focused client ,
