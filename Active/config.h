@@ -55,7 +55,7 @@ static const Rule rules[] = {
 	{ "Termite",   "termite",  "tmux",	1 << 1,     False,  	     0},
 	{ "Termite",   "termite",  NULL,	0,	        False,  	    -1},
 	{ "jetbrains-pycharm-ce", NULL, NULL,1 << 2,    False,           0},
-	{ "dedadbeaver", NULL, NULL,  		1 << 2,     False,           0},
+	{ "Dbeaver", NULL, NULL,			1 << 2,     False,           0},
 	{ "Steam",   NULL,  NULL,	      	1 << 4,	    False,           0},
 	{ "Thunar",   "thunar",  NULL,	    1 << 3,	    False,           0},	
 	{ "Thunderbird",  "Mail",  NULL,	1 << 6,	    False,           0},
