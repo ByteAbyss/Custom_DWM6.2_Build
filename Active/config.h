@@ -33,13 +33,13 @@ static char normbgcolor[]       = "#222222";
 static char normbordercolor[]   = "#444444";
 static char normfgcolor[]       = "#bbbbbb";
 static char selfgcolor[]        = "#eeeeee";
-static char selbordercolor[]    = "#770000";
+static char selbordercolor[]    = "#000080";
 static char selbgcolor[]        = "#005577";
 
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  navy  },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 
@@ -49,7 +49,7 @@ static const char *tags[] = { "", "", "", "", "", "", "", "
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Chromium", NULL,	  NULL,	      	0,	        False, 	        -1},
+	{ "Firefox", NULL,	  NULL,	      	0,	        False, 	        -1},
 	{ "Mate-calc", "mate-calce", NULL,	0,  	    True,	        -1},	
 	{ "Vivaldi-stable", NULL, NULL, 	1 << 0,     False, 	         0},
 	{ "Termite",   "termite",  "tmux",	1 << 1,     False,  	     0},
@@ -61,13 +61,13 @@ static const Rule rules[] = {
 	{ "Thunderbird",  "Mail",  NULL,	1 << 6,	    False,           0},
 	{ "Ristretto", "ristretto", NULL,	0,		    False,	         0},
 	{ "feh", "feh",	 NULL,	      		1 << 0,	    False,           1},
-	{ "Deadbeef",	 "deadbeef",NULL,	1 << 5,	    True,            0},
+	{ "Deadbeef",	 "deadbeef",NULL,	1 << 5,	    True,            1},
 	{ "Clementine",	 "clementine",NULL,	1 << 5,	    False,           0},
 	{ "libreoffice", NULL,	  NULL,	    1 << 8,	    False,           0},
 	{ "Ghb",	"ghb",	  "HandBrake",	1 << 8,	    False,           0},
 	{ "Handbrake",  NULL,	  NULL,	    1 << 8,	    False,           0},
-	{ "vlc",	 NULL,	  NULL,	      	1 << 5,	    False,           1},
-	{ "mpv",	NULL,	  NULL,	      	1 << 5,	    False,           1},
+	{ "vlc",	 NULL,	  NULL,	      	1 << 5,	    False,          -1},
+	{ "mpv",	NULL,	  NULL,	      	1 << 5,	    False,          -1},
 	
 };
 
@@ -118,7 +118,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", cyan, "-sf", dgray, NULL };
 static const char *termcmd[]  = { "termite", NULL };
 static const char *vivaldi[]  = { "vivaldi-stable", NULL };
-static const char *chrom[]    = { "chromium", NULL };
+static const char *firefox[]  = { "firefox", NULL };
 static const char *fm[]       = { "thunar", NULL };
 static const char *ranger[]   = { "termite", "-e", "ranger", "/home/joe/", NULL };
 static const char *pc[]       = { "pycharm", NULL };
@@ -143,7 +143,7 @@ static Key keys[] = {
 
 	/* Web Browsers */
 	{ MODKEY,                	    XK_w,	   spawn,          {.v = vivaldi } },
-	{ MODKEY,                	    XK_c,	   spawn,          {.v = chrom  } },
+	{ MODKEY,                	    XK_c,	   spawn,          {.v = firefox } },
 
 	/* File Managers */ 	
 	{ MODKEY,		                XK_f,      spawn,          {.v = fm } },
@@ -157,8 +157,7 @@ static Key keys[] = {
     {MODKEY, 		               XK_x, 	   spawn,SHCMD("/usr/bin/xfce4-appfinder")},  	
 	
 	/* Change Wallpaper  */
-	{MODKEY|ShiftMask,	       XK_o,	   spawn,SHCMD("xwallpaper --daemon --output DP-3 --zoom $(find /mnt/E-Space/Wallpaper/ -maxdepth 3 -type f -iname '*jpg' | shuf -n1) --output DP-0 --zoom $(find /mnt/E-Space/Wallpaper/ -maxdepth 3 -type f -iname '*jpg' | shuf -n1)")},
-	
+	{MODKEY|ShiftMask,		    XK_o,	   spawn,SHCMD("xwallpaper --daemon --output DP-3 --zoom $(find /mnt/E-Space/Wallpaper/ -maxdepth 3 -type f -iname '*jpg' | shuf -n1) --output DP-0 --zoom $(find /mnt/E-Space/Wallpaper/ -maxdepth 3 -type f -iname '*jpg' | shuf -n1) --output HDMI-0 --zoom $(find /mnt/E-Space/Wallpaper/ -maxdepth 3 -type f -iname '*jpg' | shuf -n1) ")},	
 	{ MODKEY,                	XK_z,	   spawn,          {.v = calc } },
 	{ MODKEY,                	XK_m,	   spawn,          {.v = tunes } },
 	{ MODKEY,                   XK_Print,  spawn,          {.v = scr } },
@@ -197,27 +196,24 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_o,      setcfact,       {.f =  0.00} },	
 
 	/* Mannually Update Gaps*/ 
-	{ MODKEY,                       XK_minus,  incrgaps,       {.i = +1 } }, 
-	{ MODKEY,                       XK_equal,  incrgaps,       {.i = -1 } }, 
+	{ MODKEY,                       XK_equal,  incrgaps,       {.i = +1 } }, 
+	{ MODKEY,                       XK_minus,  incrgaps,       {.i = -1 } }, 
+	{ MODKEY|ShiftMask,             XK_0,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_equal,  defaultgaps,    {0} },
 
-	/* Options for Vanity Gaps -- Overkill ---- 
-	{ MODKEY|Mod1Mask,              XK_h,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod1Mask,              XK_l,      incrgaps,       {.i = -1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
-	{ MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } },
-	{ MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_y,      incrivgaps,     {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_o,      incrivgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_y,      incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } },*/
+	/* Options for Vanity Gaps -- Overkill ---- */
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_q,      incrogaps,      {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_w,      incrogaps,      {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_e,      incrigaps,      {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_r,      incrigaps,      {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_t,      incrihgaps,     {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_y,      incrihgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_u,      incrivgaps,     {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrivgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrohgaps,     {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_p,      incrohgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_a,      incrovgaps,     {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_s,      incrovgaps,     {.i = -1 } },
 
 
 	/* Make Master */
